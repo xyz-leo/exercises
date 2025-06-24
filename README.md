@@ -1,7 +1,7 @@
 > **DISCLAIMER: Personal Learning Repository**
 >
 > This repository is a **collection of personal study notes, experimental code, and algorithm practice**.
-> It contains everything from basic exercises (`filter()`, `map()`, etc.) to classic algorithm implementations (e.g., Kadane's, binary search).
+> It contains everything from basic exercises to classic algorithm implementations.
 >
 > The purpose is to **document my learning journey**, reinforce concepts through repetition, and build a foundation for more advanced topics.
 >
