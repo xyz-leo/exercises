@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <!-- Setando via link online as fontes que estão sendo utilizadas no projeto -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Linkando o arquivo css ao html -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <section>
+    <input type="checkbox" id="close-menu" class="close-menu" aria-label="Close menu" role="button">
+  <label for="close-menu" class="close-menu-label" title="close-menu"></label>
+
+      <!-- Criação do Menu que fica na barra superior -->
+      <aside class="menu">
+        <section class="menu-content">
+          <h2>LOGO</h2>
+
+          <!-- Criação dos links do site dentro do menu -->
+          <nav>
+            <ul onclick="getElementById('close-menu').checked = false;">
+              <li><a href="#intro">Intro</a></li>
+              <li><a href="#article">Artigo</a></li>
+              <li><a href="#models">Modelos Bike</a></li>
+              <li><a href="#gallery">Galeria</a></li>
+              <li><a href="#prices">Preços</a></li>
+              <li><a href="#contact">Contato</a></li>
+            </ul>
+          </nav>
+        </section>
+      </aside>
+      <!-- Utilização de uma classe criada no css para aplicar um background -->
+      <!-- ------------------------ Intro --------------------------- -->
+      <section id="intro" class="bullseye-gradient-bg section-height1">
+        <div class="main-text">
+          <h1 id="title">DESCUBRA A LIBERDADE SOBRE DUAS RODAS</h1>
+          <br><br><br>
+          <p id="text">Sentir o vento no rosto, escapar do trânsito e reconectar com o mundo ao seu redor. Pedalar é mais do que um meio de transporte — é um estilo de vida. Seja para explorar a cidade, alcançar seus objetivos ou apenas viver com mais leveza, a bicicleta é sua parceira perfeita em cada quilômetro.</p>
+          <img src="assets/img/undraw_biking_m4mb.svg" alt="Cartoon de uma pessoa desenhada na bicicleta" id="img">
+        </div>
+      </section>
+
+      <!-- ------------------------ Article --------------------------- -->
+      <section id="article" class="section-height2">
+        <div class="article">
+          <h2>BENEFÍCIOS AO PEDALAR</h2><br><br>
+          <p>Andar de bicicleta vai muito além de uma simples atividade física. É uma forma eficiente, econômica e sustentável de se locomover, além de proporcionar inúmeros benefícios para o corpo e para a mente. Pedalar fortalece os músculos, melhora a resistência cardiovascular e ajuda na queima de calorias, sendo uma excelente opção para quem busca saúde e bem-estar sem a necessidade de grandes investimentos.<br><br>
+
+  Além dos ganhos físicos, o ciclismo também tem um impacto positivo na saúde mental. Ao pedalar, o corpo libera endorfinas — hormônios responsáveis pela sensação de prazer e relaxamento — o que contribui para a redução do estresse, da ansiedade e até da depressão. A prática regular também melhora a qualidade do sono, o foco e a disposição para as atividades do dia a dia.<br><br>
+
+  Do ponto de vista ambiental, a bicicleta é uma aliada poderosa na luta contra a poluição e o trânsito. Por não emitir gases poluentes, ela ajuda a preservar o ar das cidades e promove um estilo de vida mais consciente e conectado com o planeta. Além disso, pedalar pode ser uma forma prazerosa de explorar novos lugares, conhecer paisagens e se reconectar com o entorno.<br><br>
+
+  Seja como meio de transporte, prática esportiva ou lazer, andar de bicicleta é um hábito simples que pode transformar sua rotina de forma positiva. Mais saúde, mais economia, menos estresse e um planeta mais limpo — tudo isso em duas rodas.</p>
+        </div>
+      </section>
+
+      <!-- ------------------------ BIKE MODELS --------------------------- -->
+      <section id="models" class="section-height3 endless-constelation-bg">
+        <h3>Modelos de Bike</h3><br>
+        <p>Conheça os principais tipos de bicicletas!</p>
+
+        <div class="grid bike-models">
+
+          <article id="fixie">
+            <h4>Fixie</h4><br>
+          
+            <p>A fixie é uma bicicleta de marcha fixa, ou seja, sem câmbio e muitas vezes sem freios tradicionais, o que exige maior controle e técnica do ciclista. É muito valorizada por sua simplicidade, leveza e estilo minimalista, sendo ideal para deslocamentos urbanos e quem busca uma conexão mais direta com a pedalada.</p>
+          </article>
+
+          <article id="mtb">
+            <h4>MTB</h4><br>
+            <p>A mountain bike (MTB) é projetada para trilhas, terrenos acidentados e aventuras off-road. Seu quadro é mais robusto, conta com suspensão dianteira ou total (full suspension) e pneus largos e cravados, que proporcionam maior aderência e estabilidade em superfícies irregulares.</p>
+          </article>
+
+          <article id="road">
+            <h4>Road</h4><br>
+            <p>A road bike, ou bicicleta de estrada, é focada em velocidade e desempenho em longas distâncias sobre o asfalto. Seu quadro leve e aerodinâmico, combinado com pneus finos e guidão curvado, oferece eficiência, conforto e agilidade para quem busca performance e resistência em pedais mais rápidos.</p>
+          </article>
+        </div>
+      
+      </section>
+      <!-- ------------------------ Gallery --------------------------- -->
+      <section id="gallery" class="section-height3">
+        <h3>Galeria</h3><br>
+        <p>Check this beautiful gallery of bicycles!</p><br><br><br><br><br>
+        <div class="gallery-grid">
+          <img src="assets/img/bikewpp.jpg">
+          <img src="assets/img/cervelo.png">
+          <img src="assets/img/mtb.jpg">
+          <img src="assets/img/windbreaker.jpg">
+          <img src="assets/img/fixie pink.jpg">
+          <img src="assets/img/Red fixie.jpg">
+        </div>
+      </section>
+      <!-- ------------------------ Prices --------------------------- -->
+      <section id="prices" class="section-height4">
+          <h3>Diferença de preços entre Fixie, MTB e Road</h3><br><br><br>
+          <p>As bicicletas fixie são geralmente mais acessíveis, com preços mais baixos por sua simplicidade e poucos componentes. As mountain bikes (MTB) têm preços intermediários, pois são feitas para enfrentar terrenos irregulares e exigem componentes mais resistentes. Já as bikes road são as mais caras, focadas em desempenho e leveza para alta velocidade, usando materiais premium e tecnologia avançada.</p><br><br><br><br><br><br><br><br>
+          <table id="price-table" border="1">
+            <caption>Bike Common Prices</caption>
+            <tr>
+              <th>Prices</th>
+              <th>Fixie</th>
+              <th>Road</th>
+              <th>MTB</th>
+            </tr>
+            <tr>
+              <td class="table-intro">Intro</td>
+              <td>R$ 1.200 - R$2.000</td>
+              <td>R$ 2.500 - R$ 4.500</td>
+              <td>R$ 2.000 - R$ 4.000</td>
+            </tr>
+            <tr>
+              <td class="table-med">Med</td>
+              <td>R$ 2.000 - R$ 4.000</td>
+              <td>R$ 4.500 - R$ 10.000</td>
+              <td>R$ 4.000 - R$ 10.000</td>
+            </tr>
+            <tr>
+              <td class="table-pro">Pro</td>
+              <td>R$ 4.000 - R$ 7.000</td>
+              <td>R$ 10.000 - R$ 50.000+</td>
+              <td>R$ 10.000 - R$ 60.000</td>
+            </tr>
+          </table>
+
+      </section>
+      <!-- ------------------------ Contact --------------------------- -->
+      <section id="contact" class="section-height3 endless-constelation-bg">
+        <h2>Nos Contate</h2><br><br><br>
+        <p>Entre em contato conosco! 🚴‍♂️ Seja para tirar dúvidas sobre nossos modelos, agendar um test ride, solicitar manutenção ou compartilhar sua aventura sobre duas rodas, estamos prontos para pedalar com você nessa jornada. Fale com a nossa equipe e descubra como podemos ajudar a tornar sua experiência ainda mais incrível!</p><br><br><br><br><br>
+        <p id="cform">Formulário para Contato</p>
+        <form class="contact-form">
+          <div>
+            <label for="fname">Nome</label><br>
+            <input id="fname" name="fname" type="text" placeholder="Nome" required>
+          </div>
+          
+          <div>
+            <label for="lname">Sobrenome</label><br>
+            <input id="lname" name="lname" type="text" placeholder="Sobrenome">
+          </div>
+          
+          <div>
+            <label for="email">E-mail</label><br>
+            <input id="email" name="email" type="email" placeholder="Seu E-mail" required>
+          </div>
+          <br>
+          
+          <div>
+            <label for="yourmessage">Nos mande uma mensagem!</label><br>
+            <textarea id="yourmessage" name="yourmessage" placeholder="Diga o que achou deste website!" required></textarea>
+          </div>
+          <br>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+  </body>
+</html>
