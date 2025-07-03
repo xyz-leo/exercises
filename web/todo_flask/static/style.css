@@ -1,0 +1,139 @@
+:root {
+    --bg-dark: #111;
+    --bg-panel: #1b1b1f;
+    --bg-highlight: #27272a;
+    --text-light: #e5e5e5;
+    --text-muted: #888;
+    --primary: #9eff9e;
+    --primary-hover: #75f275;
+    --accent: #c084fc;
+    --danger: #ff5c5c;
+    --danger-hover: #e63c3c;
+    --font: 'Fira Code', 'Courier New', monospace;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: var(--font);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--bg-panel);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(144, 238, 144, 0.1);
+}
+
+header h1 {
+    margin: 0 0 15px;
+    font-size: 2rem;
+    color: var(--primary);
+    text-shadow: 0 0 5px rgba(159, 255, 159, 0.3);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[type="text"],
+textarea {
+    background-color: var(--bg-highlight);
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 10px;
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+button[type="submit"] {
+    background-color: var(--primary);
+    color: #000;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.02);
+}
+
+main table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-panel);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+thead {
+    background-color: #222;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+th {
+    color: var(--text-muted);
+}
+
+td {
+    color: var(--text-light);
+    vertical-align: top;
+}
+
+.btn-delete {
+    background-color: var(--danger);
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-delete:hover {
+    background-color: var(--danger-hover);
+    transform: scale(1.05);
+}
+
+.empty {
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    text-shadow: 0 0 3px rgba(192, 132, 252, 0.3);
+}
+

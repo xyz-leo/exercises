@@ -1,0 +1,56 @@
+<!-- This will be a unique template app -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>To-Do List</h1>
+            <form method="POST" action="/">
+                <input type="text" name="title" placeholder="Task title" required>
+                <textarea name="description" placeholder="Description (optional)"></textarea>
+                <button type="submit">Submit task</button>
+            </form>
+        </header>
+
+        <main>
+            {% if tasks %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td>{{ task.title }}</td>
+                        <td>{{ task.description or '-' }}</td>
+                        <td>{{ task.created_at.strftime('%d/%m/%Y %H:%M') }}</td>
+                        <td>
+                            <form action="/delete/{{ task.id }}" method="POST" style="display:inline;">
+                                <button class="btn-delete" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <p class="empty">Nothing to see here, for now.</p>
+            {% endif %}
+        </main>
+
+        <footer>
+            <p>Made by xyz-leo, with Flask</p>
+        </footer>
+    </div>
+</body>
+</html>
