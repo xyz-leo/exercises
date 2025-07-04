@@ -1,4 +1,3 @@
-<!-- This will be a unique template app -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -35,6 +34,9 @@
                         <td>{{ task.description or '-' }}</td>
                         <td>{{ task.created_at.strftime('%d/%m/%Y %H:%M') }}</td>
                         <td>
+                            <form action="/edit/{{ task.id }}" method="GET" style="display:inline;">
+                              <button class="btn-edit" type="submit">Edit</button>
+                            </form>
                             <form action="/delete/{{ task.id }}" method="POST" style="display:inline;">
                                 <button class="btn-delete" type="submit">Delete</button>
                             </form>
