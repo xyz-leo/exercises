@@ -3,6 +3,12 @@
 Simple to-do list built with Flask, SQLite, and SQLAlchemy.  
 Project created for learning purposes, focusing on CRUD operations and clean architecture.
 
+## Preview
+
+
+![To-do list preview](https://github.com/user-attachments/assets/d17b627d-8f1b-404e-aefe-a470a0a12c48)
+
+
 ## Features
 
 - Add tasks with title and optional description
