@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Set character encoding to UTF-8 -->
+  <meta charset="UTF-8" />
+  <!-- Title shown on browser tab -->
+  <title>Task Manager</title>
+  <!-- Link external CSS file from Flask static folder -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <!-- Main container for the app -->
+  <div class="container">
+    <!-- Page heading -->
+    <h1>Task Manager</h1>
+
+    <!-- Task input form -->
+    <form id="task-form">
+      <!-- Input for task title, required field -->
+      <input type="text" id="title" placeholder="Task title" required />
+      <!-- Textarea for optional task description -->
+      <textarea id="description" placeholder="Description (optional)"></textarea>
+
+      <!-- Button to create a new task -->
+      <button type="submit" id="create-btn">Create Task</button>
+      <!-- Button to update an existing task, initially hidden -->
+      <button type="button" id="update-btn" style="display:none;">Update Task</button>
+      <!-- Button to cancel editing, initially hidden -->
+      <button type="button" id="cancel-btn" style="display:none;">Cancel</button>
+    </form>
+
+    <!-- Unordered list where tasks will be rendered -->
+    <ul id="task-list"></ul>
+  </div>
+
+  <script>
+    // Base API endpoint for tasks
+    const API = "/tasks/";
+    // Store the ID of the task being edited, or null if none
+    let editingTaskId = null;
+
+    // Fetch all tasks from the API and render them
+    async function fetchTasks() {
+      // Fetch tasks from backend
+      const res = await fetch(API);
+      const json = await res.json();
+      const list = document.getElementById("task-list");
+      // Clear current list items
+      list.innerHTML = "";
+
+      // Loop through each task and create list item
+      json.data.forEach(task => {
+        const li = document.createElement("li");
+        // Insert task details and action buttons into the list item
+        li.innerHTML = `
+          <strong>${escapeHtml(task.title)}</strong>
+          <p>${escapeHtml(task.description || "")}</p>
+          <small>${new Date(task.created_at).toLocaleString()}</small>
+          <button onclick="startEdit(${task.id})" title="Edit">✏️</button>
+          <button onclick="deleteTask(${task.id})" title="Delete" style="right:50px; background:#e67e22;">🗑️</button>
+        `;
+        // Append list item to task list
+        list.appendChild(li);
+      });
+    }
+
+    // Escape HTML special characters to prevent XSS
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Handle form submission for creating a new task
+    document.getElementById("task-form").addEventListener("submit", async e => {
+      e.preventDefault();  // Prevent form default submit reload
+      if(editingTaskId !== null) return; // Do not create if currently editing
+
+      // Get trimmed values from inputs
+      const title = document.getElementById("title").value.trim();
+      const description = document.getElementById("description").value.trim();
+
+      // Validate title is not empty
+      if(!title) {
+        alert("Title is required");
+        return;
+      }
+
+      // Send POST request to API to create new task
+      await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, description })
+      });
+
+      // Reset form inputs and refresh task list
+      e.target.reset();
+      fetchTasks();
+    });
+
+    // Begin editing an existing task by loading its data into the form
+    function startEdit(id) {
+      editingTaskId = id;
+      // Hide create button and show update/cancel buttons
+      document.getElementById("create-btn").style.display = "none";
+      document.getElementById("update-btn").style.display = "inline-block";
+      document.getElementById("cancel-btn").style.display = "inline-block";
+
+      // Fetch task data by ID from API and fill form inputs
+      fetch(API + id)
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("title").value = data.data.title || "";
+          document.getElementById("description").value = data.data.description || "";
+        });
+    }
+
+    // Cancel the current editing process and reset the form/UI
+    document.getElementById("cancel-btn").addEventListener("click", () => {
+      editingTaskId = null;
+      // Show create button, hide update and cancel buttons
+      document.getElementById("create-btn").style.display = "inline-block";
+      document.getElementById("update-btn").style.display = "none";
+      document.getElementById("cancel-btn").style.display = "none";
+      // Clear form inputs
+      document.getElementById("task-form").reset();
+    });
+
+    // Handle updating an existing task via PATCH request
+    document.getElementById("update-btn").addEventListener("click", async () => {
+      const title = document.getElementById("title").value.trim();
+      const description = document.getElementById("description").value.trim();
+
+      // Validate title input
+      if (!title) {
+        alert("Title is required");
+        return;
+      }
+
+      // Send PATCH request to update task
+      await fetch(API + editingTaskId, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, description })
+      });
+
+      // Reset editing state and form/UI
+      editingTaskId = null;
+      document.getElementById("create-btn").style.display = "inline-block";
+      document.getElementById("update-btn").style.display = "none";
+      document.getElementById("cancel-btn").style.display = "none";
+      document.getElementById("task-form").reset();
+      // Refresh task list
+      fetchTasks();
+    });
+
+    // Delete a task by ID after confirmation
+    async function deleteTask(id) {
+      if (!confirm("Are you sure you want to delete this task?")) return;
+
+      // Send DELETE request to API
+      await fetch(API + id, { method: "DELETE" });
+
+      // If deleting the currently edited task, reset form/UI
+      if(editingTaskId === id){
+        editingTaskId = null;
+        document.getElementById("create-btn").style.display = "inline-block";
+        document.getElementById("update-btn").style.display = "none";
+        document.getElementById("cancel-btn").style.display = "none";
+        document.getElementById("task-form").reset();
+      }
+      // Refresh task list
+      fetchTasks();
+    }
+
+    // Load tasks on initial page load
+    fetchTasks();
+  </script>
+</body>
+</html>
