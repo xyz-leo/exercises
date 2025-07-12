@@ -9,6 +9,10 @@ This is a simple Task Manager project built with Flask and SQLite. It provides a
 - Tasks have title, optional description, and creation timestamp
 - Uses Flask Blueprints and SQLAlchemy ORM
 
+
+<img width="987" height="841" alt="Task Manager API" src="https://github.com/user-attachments/assets/5946f980-794c-4161-8d0e-8ee26422b755" />
+
+
 ## Project Structure
 
 ```
