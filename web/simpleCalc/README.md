@@ -1,5 +1,7 @@
 # Simple Dark-Themed Calculator (Experimental)
 
+<img width="395" height="553" alt="Captura de tela 2025-07-31 203236" src="https://github.com/user-attachments/assets/f73c90be-0c4e-4bbf-8c35-0c18f674c4c9" />
+
 This project is a minimalist, dark-themed calculator built using HTML, CSS, and vanilla JavaScript.
 
 It was created as an experimental exercise to practice:
