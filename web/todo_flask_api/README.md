@@ -1,5 +1,7 @@
 # Task Manager API with Flask
 
+<img width="960" height="774" alt="Captura de tela 2025-07-31 204344" src="https://github.com/user-attachments/assets/0c4a3a31-77ca-486b-bcc4-1c19d745021e" />
+
 This is a simple Task Manager project built with Flask and SQLite. It provides a RESTful API and a frontend interface to create, read, update, and delete tasks.
 
 ## Features
