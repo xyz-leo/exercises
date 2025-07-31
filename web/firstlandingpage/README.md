@@ -1,5 +1,7 @@
 # Landing Page - Personal Project
 
+<img width="972" height="721" alt="Project Screenshot" src="https://github.com/user-attachments/assets/66dd70eb-3dd0-4e92-b2bb-ab2024bd7e64" />
+
 This repository contains the source code for a simple and modern landing page built with pure HTML and CSS. The project focuses on clean structure, basic responsiveness, and easy maintenance.
 
 ---
