@@ -1,0 +1,158 @@
+<!-- Filename: simpleCalc.html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #2D2D2D;
+    }
+
+    .calc-container {
+      background-color: #1E1E1E;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      width: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calc-display {
+      background-color: #000;
+      color: #0F0;
+      font-size: 2.8rem;
+      padding: 20px;
+      text-align: right;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      min-height: 60px;
+      overflow-x: auto;
+    }
+
+    .calc-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .calc-buttons button {
+      font-size: 1.3rem;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background-color: #333;
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .calc-buttons button:hover {
+      background-color: #555;
+    }
+
+    button.operator {
+      background-color: #1E6F5C;
+    }
+
+    button.operator:hover {
+      background-color: #24917E;
+    }
+
+    button.equal {
+      background-color: rgba(250, 200, 0);
+      color: #fff;
+    }
+
+    button.clear {
+      background-color: #C94A4A;
+    }
+  </style>
+</head>
+<body>
+  <div class="calc-container" id="calc-container">
+    <div class="calc-display" id="calc-display">0</div>
+    <div class="calc-buttons" id="calc-buttons"></div>
+  </div>
+
+  <script>
+    // Variables
+    const calcContainer = document.getElementById('calc-container')
+    const calcDisplay = document.getElementById('calc-display')
+    const calcButtons = document.getElementById('calc-buttons')
+
+
+    // Character list for the calculator buttons. Array order matters
+    const buttonsList = ['%', 'CE', 'C', '⌫', '^', 'x²', '√', '÷', 7, 8, 9, '×', 4, 5, 6, '−', 1, 2, 3, '+', '±', 0, '.', '=']
+
+    buttonsList.forEach(symbol => {
+      btn = document.createElement('button');
+      btn.textContent = symbol;
+
+      if (['+', '−', '×', '÷', '^', '%'].includes(symbol)) {
+      btn.classList.add('operator');
+      }
+      if (symbol === '=') {
+        btn.classList.add('equal');
+      }
+      if (['C', 'CE', '⌫'].includes(symbol)) {
+        btn.classList.add('clear');
+      }
+
+      calcButtons.appendChild(btn)
+    });
+    
+    calcButtons.addEventListener('click', event => {
+      const clicked = event.target;
+
+      if (clicked.tagName !== 'BUTTON') return;
+
+      const value = clicked.textContent;
+      
+      if (isDigit(value)) {
+        appendDigit(value);
+      } else if (value === 'CE') {
+        clearEntry();
+      }
+
+    });
+
+    function isDigit(value) {
+      return /\d/.test(value) || value === '.';
+    }
+
+    function clear() {
+      calcDisplay.textContent = 0;
+      // previous operation = 0
+    }
+
+    function clearEntry() {
+      calcDisplay.textContent = 0;
+    }
+
+    function appendDigit(value) {
+      if (calcDisplay.textContent == 0) {
+        calcDisplay.textContent = value;
+      } else {
+        calcDisplay.textContent += value;
+      }
+    }
+
+  </script>
+</body>
+</html>
