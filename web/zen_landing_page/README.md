@@ -1,5 +1,7 @@
 # FocusZen - Basic Landing Page Exercise
 
+<img width="1373" height="878" alt="project_screenshot" src="https://github.com/user-attachments/assets/96c4f683-dc64-4e16-aa38-56b7fccbc331" />
+
 This is a simple landing page project built as part of the `/exercises/web` repository.
 
 The main goal of this exercise is to strengthen foundational HTML and CSS skills through deliberate practice. It is not meant to be a polished or production-ready product, but rather a small project focused on:
