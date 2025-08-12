@@ -102,16 +102,3 @@ Project Structure
     config.py: Loads and saves user theme and size preferences.
 
     size_manager.py: Manages different size schemes to the entire application.
-
-
-How to Contribute
-
-    Fork this repository.
-
-    Create a new branch for your changes (git checkout -b feature/new-feature).
-
-    Commit your changes (git commit -am 'Add new feature').
-
-    Push to the branch (git push origin feature/new-feature).
-
-    Open a pull request.
