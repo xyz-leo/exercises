@@ -4,12 +4,6 @@ Custom Calculator App Made in Python with PySide6
 # CustomCalc
 A project of a custom calculator made in Python, by me. You can change the calculator themes and size. Please enjoy!
 
-Calculator App Interface:
-
-![image](https://github.com/user-attachments/assets/a454e2e6-4791-46ff-876c-044741335f35) ![image](https://github.com/user-attachments/assets/8a275c79-0ab8-4e9b-9f2c-323aa21453ae)
- ![image](https://github.com/user-attachments/assets/1d29bc37-000e-47cc-9c75-797fe60fd1b4) 
-
-
 
 This is a simple calculator app developed with Python and the PySide6 library. The app features an intuitive graphical user interface (GUI) and allows users to perform basic mathematical operations such as addition, subtraction, multiplication, division, exponentiation, percentage, along with functionalities like clearing the display and deleting a character at a time.
 
