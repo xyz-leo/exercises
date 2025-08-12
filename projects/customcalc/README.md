@@ -1,7 +1,4 @@
 # CustomCalc
-Custom Calculator App Made in Python with PySide6
-
-# CustomCalc
 A project of a custom calculator made in Python, by me. You can change the calculator themes and size. Please enjoy!
 
 
