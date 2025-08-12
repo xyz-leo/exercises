@@ -9,18 +9,6 @@ The project allows authenticated users to manage personal contacts and organize 
 
 ---
 
-## Screenshots
-
-![Home](https://github.com/user-attachments/assets/6355a8b8-5360-433f-b522-bfc4eb0c48f4)
-
-![Contact List](https://github.com/user-attachments/assets/0b8bc7bf-551c-482c-893d-f85d3396011a)
-
-![Single contact display](https://github.com/user-attachments/assets/1ed9ad36-9e6e-435c-9a04-bc6ecd2c02ba)
-
-![Your Categories](https://github.com/user-attachments/assets/e34bb2f8-6ac3-4bce-bcfa-0edf9a6d4b84)
-
----
-
 ## Features
 
 - User authentication (register, login, logout, profile update)
