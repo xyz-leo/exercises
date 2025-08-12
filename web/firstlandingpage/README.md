@@ -40,17 +40,6 @@ This repository contains the source code for a simple and modern landing page bu
 2. Open the index.html file in your browser to view the landing page.
 
 ---
-
-## Next Steps
-
-    Add backend integration for the contact form.
-
-    Improve responsiveness for mobile devices.
-
-    Implement animations and interactivity with JavaScript.
-
----
-
 ## License
 
 This project is open for personal use and learning.
