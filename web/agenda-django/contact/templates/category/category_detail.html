@@ -1,0 +1,33 @@
+{% extends "global/base.html" %} {# Extends the base layout #}
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'global/css/categories.css' %}"> {# Loads CSS specific for categories #}
+{% endblock %}
+
+{% block content %}
+<div class="category-wrapper">
+  <h1 class="category-title">Category: {{ category.category_name }}</h1> {# Shows category name as page title #}
+
+  {# Button to view contacts within this category #}
+  <a href="{% url 'contact:contacts_by_category' category.id %}" class="category-button view-button">
+    View Contacts in this Category
+  </a>
+
+  {# Button to update category #}
+  <a href="{% url 'contact:category_update' category.id %}" class="category-button">
+    Update
+  </a>
+
+  {# Button to delete category #}
+  <a href="{% url 'contact:category_delete' category.id %}" class="category-button delete-button">
+    Delete
+  </a>
+
+  {# Button to go back to the list of categories #}
+  <a href="{% url 'contact:category_list' %}" class="category-button back-button">
+    Back to Categories
+  </a>
+</div>
+{% endblock %}
+

@@ -1,0 +1,122 @@
+/* header */
+.category-title {
+  color: #f1f1f1;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+/* Wrapper */
+.category-wrapper {
+  max-width: 700px;
+  margin: 4rem auto;
+  background-color: #1e1e1e;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Categories list */
+.category-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.category-li {
+  background-color: #2a2a2a;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.category-li:hover {
+  background-color: #333;
+}
+
+.category-li a {
+  color: #4A90E2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.category-li a:hover {
+  color: #007acc;
+  text-decoration: underline;
+}
+
+/* Buttons */
+.category-button {
+  background-color: rgb(74, 144, 226);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.category-button:hover {
+  background-color: #337ab7;
+  transform: scale(1.03);
+}
+
+.delete-button {
+  background-color: rgba(180, 0, 0);
+}
+
+.delete-button:hover {
+  background-color: rgba(140, 0, 0);
+}
+
+.view-button {
+  background-color: rgba(0, 160, 150);
+}
+
+.view-button:hover {
+  background-color: rgba(0, 130, 120);
+}
+
+.back-button {
+  background-color: #555;
+}
+
+.back-button:hover {
+  background-color: #444;
+}
+
+/* Delete confirmation page */
+.confirm-title {
+  color: #f1f1f1;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.confirm-message {
+  color: #ccc;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.confirm-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.confirm-buttons form,
+.confirm-buttons a {
+  display: inline-block;
+}

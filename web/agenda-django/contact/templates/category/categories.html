@@ -1,0 +1,43 @@
+{% extends "global/base.html" %} {# Extends the base layout #}
+{% load static %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'global/css/categories.css' %}"/> {# Loads category-specific CSS #}
+{% endblock %}
+
+{% block content %}
+<div class="category-wrapper">
+  <h1 class="category-title">Your Categories</h1> {# Page title #}
+
+  {# List of categories #}
+  <ul class="category-list">
+    {% for category in categories %}
+      <li class="category-li">
+        <div>
+          {# Link to category detail #}
+          <a href="{% url 'contact:category_detail' category.id %}">
+            {{ category.category_name }}
+          </a>
+          | 
+          {# Link to view contacts in this category #}
+          <a href="{% url 'contact:contacts_by_category' category.id %}">
+            View Contacts
+          </a>
+        </div>
+      </li>
+    {% empty %}
+      {# Message if there are no categories #}
+      <li class="category-li">No categories yet.</li>
+    {% endfor %}
+  </ul>
+
+  {# Action buttons: create new category or go back to all contacts #}
+  <a href="{% url 'contact:category_create' %}" class="category-button">
+    Create Category
+  </a>
+  <a href="{% url 'contact:contacts' %}" class="category-button back-button">
+    Back to All Contacts
+  </a>
+</div>
+{% endblock %}
+

@@ -1,0 +1,181 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #121212;
+  color: #e0e0e0;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: #1F1F1F;
+  color: #e0e0e0;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Header title */
+header h1 {
+  font-size: 1.8rem;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #e0e0e0;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #4A90E2;
+}
+
+#user-a {
+  color: #4A90E2;
+}
+
+/* Main content */
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 2rem;
+  background: #1A1A1A;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1F1F1F;
+  color: #888;
+  margin-top: 2rem;
+  border-top: 1px solid #333;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.step-links {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Links in pagination */
+.step-links a {
+  color: #00bcd4;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.step-links a:hover {
+  background-color: #00bcd4;
+  color: #000;
+}
+
+.step-links .current {
+  margin: 0 1rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Django messages */
+.messages {
+  list-style: none;
+  padding: 10px;
+}
+
+.messages li {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.messages .success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.messages .error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Hamburger menu for mobile */
+#hamburger-btn {
+  display: none;
+}
+
+/* Mobile nav adjustments */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: #1F1F1F;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: -2px 2px 10px rgba(0,0,0,0.7);
+    border-radius: 0 0 0 10px;
+    z-index: 100;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  #hamburger-btn {
+    display: flex;
+    position: absolute;
+    right: 1rem;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+  }
+
+  #hamburger-btn .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #e0e0e0;
+    border-radius: 2px;
+  }
+}
+

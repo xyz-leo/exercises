@@ -1,0 +1,38 @@
+{% extends 'global/base.html' %}  {# Extends the base template #}
+{% load static %}
+
+{% block title %}
+<title>Agenda - {{ contact.first_name }} {{ contact.last_name }}</title> {# Dynamic page title with contact name #}
+{% endblock title %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'global/css/single_contact.css' %}"> {# Loads specific CSS for this page #}
+{% endblock extracss %}
+
+{% block content %}
+  <div class="single-contact">
+    <h1 class="single-contact-name">{{ contact.first_name }} {{ contact.last_name }}</h1> {# Contact full name as page header #}
+
+    {# Contact details #}
+    <p><b>Description:</b> {{ contact.description }}</p>
+    <p><b>ID:</b> {{ contact.id }}</p>
+    <p><b>E-mail:</b> {{ contact.email }}</p>
+    <p><b>Phone:</b> {{ contact.phone }}</p>
+    <p><b>Category:</b> {{ contact.category }}</p>
+    <p><b>Created date:</b> {{ contact.created_date }}</p>
+
+    <hr><br><br>
+
+    {# Action buttons: update and delete #}
+    <div class="buttons">
+      <a href="{% url 'contact:update' contact.id %}" class="button">Update</a>
+      
+      <form action="{% url 'contact:delete' contact.id %}" method="POST"
+       onsubmit="return confirm('Are you sure that you want to delete this contact?');">
+        {% csrf_token %}
+        <button class="button del-button" type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

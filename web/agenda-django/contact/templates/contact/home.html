@@ -1,0 +1,28 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'global/css/home.css' %}"> {# Home-specific CSS #}
+{% endblock extracss %}
+
+{% block content %}
+<section class="home-section">
+  <div class="home-content">
+    {# Welcome message and page introduction #}
+    <h1 class="home-title">Welcome to your Agenda!</h1>
+    <p class="home-subtitle">Easily manage your contacts.</p>
+
+    {# Main action buttons #}
+    <div class="home-buttons">
+      <a href="{% url 'contact:contacts' %}" class="btn-primary">Show Contacts</a>
+      <a href="{% url 'contact:create' %}" class="btn-outline">Add New Contact</a>
+    </div>
+  </div>
+
+  {# Decorative image for the homepage #}
+  <div class="home-illustration">
+    <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Agenda Icon">
+  </div>
+</section>
+{% endblock %}
+

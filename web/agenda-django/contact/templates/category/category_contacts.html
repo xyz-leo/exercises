@@ -1,0 +1,54 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'global/css/table.css' %}"> {# Table styling CSS #}
+{% endblock extracss %}
+
+{% block content %}
+  <div class="table">
+    <div class="search">
+      {# Displays the category name in the title #}
+      <h2 class="table-caption">Contacts in category: "{{ category.category_name }}"</h2>
+      {# Back link to categories list #}
+      <a class="back" href="{% url 'contact:category_list' %}">← Back to Categories</a>
+    </div>
+
+    <table class="contacts-table">
+      <thead>
+        <tr class="table-row table-row-header">
+          <th class="table-header">First Name</th>
+          <th class="table-header">Last Name</th>
+          <th class="table-header">Phone</th>
+          <th class="table-header">E-mail</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {# Iterates over contacts in the category #}
+        {% for contact in contacts %}
+          <tr class="table-row">
+            <td class="table-cel" data-label="First Name">
+              <a class="table-link" href="{% url 'contact:details' contact.id %}">{{ contact.first_name }}</a>
+            </td>
+            <td class="table-cel" data-label="Last Name">
+              {{ contact.last_name }}
+            </td>
+            <td class="table-cel" data-label="Phone">
+              {{ contact.phone }}
+            </td>
+            <td class="table-cel" data-label="E-mail">
+              {{ contact.email }}
+            </td>
+          </tr>
+        {% empty %}
+          {# Message if there are no contacts in this category #}
+          <tr>
+            <td colspan="4">No contacts in this category.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock content %}
+

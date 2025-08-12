@@ -1,0 +1,32 @@
+{% extends "global/base.html" %} {# Extends the base layout #}
+{% load static %}
+
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'global/css/categories.css' %}"> {# Loads category CSS #}
+{% endblock %}
+
+{% block content %}
+<div class="category-wrapper">
+  {# Confirmation title with category name #}
+  <h1 class="confirm-title">Delete Category "{{ category.category_name }}"?</h1>
+  
+  {# Confirmation message warning about deletion #}
+  <p class="confirm-message">
+    Are you sure you want to delete this category? This action cannot be undone.
+  </p>
+
+  <div class="confirm-buttons">
+    {# Form to confirm deletion #}
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit" class="category-button delete-button">Yes, Delete</button>
+    </form>
+
+    {# Cancel button redirects to category detail page #}
+    <a href="{% url 'contact:category_detail' category.id %}" class="category-button back-button">
+      Cancel
+    </a>
+  </div>
+</div>
+{% endblock %}
+

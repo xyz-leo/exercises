@@ -1,0 +1,109 @@
+/* Table layout */
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+/* Search bar layout */
+.search {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search .search-input {
+  text-align: center;
+  font-size: 1.1rem;
+  border-radius: 0.8rem;
+}
+
+/* Table header */
+.table-caption {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #e0e0e0;
+}
+
+/* Table headers and cells */
+.table-header,
+.table-cel {
+  padding: 12px 15px;
+  border: 1px solid #444;
+  text-align: left;
+}
+
+/* Links inside table */
+.table-link {
+  color: #4FC3F7;
+  text-decoration: none;
+}
+
+.table-link:hover {
+  text-decoration: underline;
+}
+
+/* Alternating row colors */
+.table-row:nth-child(even) {
+  background-color: #333;
+}
+
+.table-row:nth-child(odd) {
+  background-color: #2a2a2a;
+}
+
+/* Back button */
+.back {
+  color: white;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.back:hover {
+  color: rgb(74, 144, 226);
+}
+
+/* Responsive table */
+@media (max-width: 768px) {
+  .contacts-table,
+  .contacts-table thead,
+  .contacts-table tbody,
+  .contacts-table th,
+  .contacts-table td,
+  .contacts-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .contacts-table thead {
+    display: none;
+  }
+
+  .table-row {
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #2a2a2a;
+  }
+
+  .table-cel {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #444;
+  }
+
+  .table-cel:last-child {
+    border-bottom: none;
+  }
+
+  .table-cel::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #aaa;
+  }
+}
+

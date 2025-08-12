@@ -1,0 +1,39 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'global/css/create_form.css' %}"> {# Reuses form CSS styling #}
+{% endblock extracss %}
+
+{% block content %}
+  <div class="form-wrapper">
+
+    {# If user is authenticated, show user information and logout/update options #}
+    {% if user.is_authenticated %}
+      <h1>User Page</h1><br>
+      <p>You are logged as: <strong>{{ user }}</strong>.</p><br><br>
+
+      <h2>User Information</h2>
+      <p>First name: <strong>{{ user.first_name }}</strong>.</p>
+      <p>Last name: <strong>{{ user.last_name }}</strong>.</p>
+      <p>Phone Number: <strong>{{ user.phone }}</strong>.</p> {# Note: phone isn't in User model by default #}
+      <p>Email: <strong>{{ user.email }}</strong>.</p><br><br>
+
+      {# Logout form #}
+      <form action="{% url 'contact:logout_view' %}" method="post">
+        {% csrf_token %}
+        <button class='form-button logout-button' type="submit">Logout</button>
+      </form>
+      
+      {# Update user profile button #}
+      <a class='form-button' href="{% url 'contact:user_update' %}">Update</a>
+
+    {# If user is not authenticated, show login form and link to register #}
+    {% else %}
+      {% include 'global/form.html' %}
+      <a href="{% url 'contact:register' %}" class='form-button register'>Register</a>
+    {% endif %}
+  </div>
+{% endblock content %}
+
+

@@ -1,0 +1,62 @@
+{% extends 'global/base.html' %}
+{% load static %}
+
+{% block extracss %}
+  <link rel="stylesheet" href="{% static 'global/css/table.css' %}"> {# Loads table styling CSS #}
+{% endblock extracss %}
+
+{% block content %}
+  <div class="table">
+
+    <table class="contacts-table">
+
+      {# Search bar #}
+      <div class="search">
+        <h2 class="table-caption">Contacts</h2>
+        <form action="{% url 'contact:search' %}" method="GET">
+          <input type="search" class="search-input" placeholder="Search contacts"
+          id="search" name="q" value="{{ request.GET.q.strip }}">
+        </form>
+      </div>
+
+      {# Table headers #}
+      <thead>
+        <tr class="table-row table-row-header">
+          <th class="table-header">First Name</th>
+          <th class="table-header">Last Name</th>
+          <th class="table-header">Phone</th>
+          <th class="table-header">E-mail</th>
+        </tr>
+      </thead>
+
+      {# Table body with contacts #}
+      <tbody>
+        {% for contact in page_obj %}
+          <tr class="table-row">
+            <td class="table-cel" data-label="First Name">
+              <a class="table-link" href="{% url 'contact:details' contact.id %}">
+                {{ contact.first_name }}
+              </a>
+            </td>
+
+            <td class="table-cel" data-label="Last Name">
+              {{ contact.last_name }}
+            </td>
+
+            <td class="table-cel" data-label="Phone">
+              {{ contact.phone }}
+            </td>
+
+            <td class="table-cel" data-label="E-mail">
+              {{ contact.email }}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {# Small disclaimer note #}
+    <p>Disclaimer: All these contacts are fake. For demonstration purposes only.</p>
+  </div>
+{% endblock content %}
+
