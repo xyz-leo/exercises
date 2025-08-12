@@ -21,7 +21,7 @@ This repository contains a collection of exercises and small projects created fo
 
 ## Main folders
 
-- `web/`: Web development projects using Django, HTML, CSS, and Python.
+- `web/`: Web development projects using Django, HTML, CSS, JS, Flask and Python.
 - `projects/`: Simple projects of all kinds for learning purposes.
 
 ## Notes
