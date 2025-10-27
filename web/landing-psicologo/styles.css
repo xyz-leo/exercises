@@ -1,0 +1,713 @@
+/* Filename: styles.css */
+
+/* Para definir a paleta de cores */
+:root {
+  --cor-fundo: #f9f9f9;
+  --cor-destaque: #4a40ff;
+  --texto-cor: #333333;
+  --texto-secundario: #777;
+  --header-altura: 60px;
+  --cor-hover: #3a30cc;
+}
+
+/* Redefinição da margin, padding e ativando border-box */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  font-family: sans-serif;
+  font-size: 1.6rem; /* = 16px */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.5;
+  color: #333333;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  display: block;
+}
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body, html {
+  min-height: 100%;
+  width: 100%;
+}
+
+i {
+  color: var(--cor-destaque);
+  font-size: 3.5rem;
+}
+
+/* 5 sessões de informaçao, todas ocupando 100% da viewport horizontal */
+.section {
+  height: 100vh;
+  padding: 7rem 4rem;
+}
+
+/* --- 'Cabeçalho' fixo --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-altura);
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+/* logo */
+header .LOGO {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* menu desktop */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--texto-cor);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--cor-hover);
+}
+
+/* checkbox escondido */
+.menu-checkbox {
+  display: none;
+}
+
+/* botão 'hambúrguer' para mobile */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle i:hover {
+  color: var(--cor-hover);
+  transition: 0.5s ease;
+}
+
+/* Faixas diversidade */
+.faixa {
+  padding: 4rem;
+  width: 100%;
+  background-size: contain;
+  opacity: 0.8;
+  margin-top: 2.5rem;
+}
+
+/* --- Seção principal --- */
+.section.inicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, #e0f7fa, rgba(255, 250, 200, 0.5));
+  position: relative;
+}
+
+/* Ícone coração */
+.section.inicio i {
+  font-size: 5rem;
+  color: var(--cor-destaque);
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+}
+
+/* Bem-vindo */
+.section.inicio h1 {
+  font-size: 3.4rem;
+  color: var(--cor-destaque);
+  margin-bottom: 10px;
+}
+
+/* Frase principal e parágrafo */
+.section.inicio h2 {
+  font-size: 2.4rem;
+  color: var(--texto-cor);
+  margin-bottom: 20px;
+}
+
+.section.inicio p {
+  max-width: 600px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  color: var(--texto-secundario);
+  margin-bottom: 30px;
+  padding: 0 10px;
+}
+
+/* Botão Agendar */
+.section.inicio .agendar {
+  display: inline-block;
+  padding: 15px 35px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--cor-destaque);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 15px rgba(74, 64, 255, 0.3);
+  margin-bottom: 40px;
+}
+
+.section.inicio .agendar:hover {
+  background-color: var(--cor-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(74, 64, 255, 0.4);
+}
+
+/* Nome e cargo */
+.section.inicio h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--texto-cor);
+  margin-bottom: 5px;
+}
+
+.section.inicio h4 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--texto-secundario);
+  margin-bottom: 20px;
+}
+
+/* Imagem do psicólogo */
+.section.inicio img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #4a40ff;
+  margin-top: 1rem;
+}
+
+.faixa.autismo {
+  background-image: url(assets/images/faixa-autismo.jpg);
+}
+
+/* --- Sobre --- */
+.sobre {
+  background: linear-gradient(
+  180deg,
+  rgba(255, 250, 200, 0.5),
+  rgba(220, 255, 200, 0.5)
+  );
+  color: #222;
+  text-align: center;
+}
+
+.sobre h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #4a40ff;
+}
+
+/* grid com os cards */
+.sobre-blocos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* cards dentro da grid */
+.sobre-item {
+  background: #fff; /* cards brancos */
+  border-radius: 12px;
+  padding: 25px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sobre-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* ícone dos cards */
+.sobre-item i {
+  font-size: 4rem;
+  color: #4a40ff;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* parágrafos dos cards */
+.sobre-item p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-align: left;
+  color: #333;
+}
+
+.faixa.diversidade {
+  background-image: url(assets/images/faixa-girassol.png);
+}
+
+/* --- Serviços --- */
+.servicos {
+  background: linear-gradient(
+  180deg,
+  rgba(220, 255, 200, 0.5), /* começando igual ao final do Sobre */
+  rgba(255, 230, 240, 0.5)  /* rosa bem claro */
+  );
+  color: #222;
+  text-align: center;
+  padding: 7rem 4rem;
+  position: relative;
+}
+
+.servicos h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--cor-destaque);
+}
+
+.servicos p {
+  font-size: 1.6rem;
+  color: var(--texto-secundario);
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cards de serviços */
+.servicos-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.servico-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servico-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.servico-card i {
+  font-size: 4rem;
+  color: var(--cor-destaque);
+}
+
+.servico-card h3 {
+  font-size: 1.8rem;
+  color: var(--cor-destaque);
+}
+
+.servico-card p {
+  font-size: 1.4rem;
+  color: var(--texto-secundario);
+  text-align: center;
+}
+
+
+/* --- Depoimentos --- */
+.depoimentos {
+  background: linear-gradient(
+  180deg,
+  rgba(255, 230, 240, 0.5), /* rosa bem claro – início */
+  rgba(255, 200, 200, 0.5)  /* vermelho bem claro – final */
+  );
+  color: #222;
+  text-align: center;
+  padding: 7rem 4rem;
+  position: relative;
+}
+
+.depoimentos h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--cor-destaque);
+}
+
+.depoimentos p {
+  font-size: 1.6rem;
+  color: var(--texto-secundario);
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Container com scroll horizontal */
+.depoimentos-container {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+
+.depoimentos-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.depoimentos-container::-webkit-scrollbar-thumb {
+  background-color: rgba(74,64,255,0.4);
+  border-radius: 3px;
+}
+
+/* Cards */
+.depoimento-card {
+  flex: 0 0 300px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.depoimento-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--cor-destaque);
+}
+
+.depoimento-card p {
+  font-size: 1.4rem;
+  color: var(--texto-secundario);
+  text-align: center;
+}
+
+.depoimento-card h4 {
+  font-size: 1.6rem;
+  color: var(--cor-destaque);
+}
+
+
+/* --- Contato --- */
+.contato {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 200, 200, 0.5),
+    #ffffff
+  );
+  color: #222;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 11rem;
+}
+
+.contato h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--cor-destaque);
+}
+
+.contato p {
+  font-size: 1.6rem;
+  color: var(--texto-secundario);
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+/* Formulário */
+.contato-form {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(74, 64, 255, 0.15);
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--cor-destaque);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--cor-destaque);
+  box-shadow: 0 0 8px rgba(74,64,255,0.2);
+  outline: none;
+}
+
+.btn-contato {
+  display: inline-block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--cor-destaque);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-contato:hover {
+  background-color: var(--cor-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(74,64,255,0.3);
+}
+
+
+footer {
+  background-color: #1a1a1a; /* fundo escuro */
+  color: #ccc; /* texto cinza claro */
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+/* tornar o site responsivo para mobile */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 60px;
+    right: -100%;
+    width: 200px;
+    height: calc(100vh - 60px);
+    background-color: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-top: 20px;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* quando o checkbox estiver marcado, mostra o menu */
+  .menu-checkbox:checked ~ .nav-links {
+    right: 0;
+  }
+
+  .section i {
+    margin-top: 4rem;
+  }
+
+  .section.inicio h1 {
+  font-size: 2.2rem;
+  }
+
+  .section.inicio h2 {
+    font-size: 1.6rem;
+  }
+
+  .section.inicio p {
+    font-size: 1.2rem;
+  }
+
+  .section.inicio .agendar {
+    padding: 12px 25px;
+    font-size: 1.6rem;
+  }
+  
+
+  .sobre-blocos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;          
+    max-height: 400px;   
+    overflow-y: auto;       /* permite scroll vertical pra não quebrar */
+    padding: 10px;
+  }
+
+  .sobre-blocos::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .sobre-blocos::-webkit-scrollbar-thumb {
+    background-color: rgba(74,64,255,0.4);
+    border-radius: 3px;
+  }
+
+  .sobre-item {
+    flex: 0 0 auto;        
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .sobre-item i {
+    font-size: 3rem;
+    margin-bottom: 12px;
+  }
+
+  .sobre-item p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
+
+  .servicos h2 {
+    font-size: 2.2rem;
+  }
+
+  .servicos p {
+    font-size: 1.4rem;
+  }
+
+  .servicos-cards {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    overflow-y: auto;
+
+  }
+
+  .servico-card {
+    padding: 20px 15px;
+  }
+
+  .servico-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .servico-card p {
+    font-size: 1.2rem;
+  }
+
+  
+  .depoimentos h2 {
+    font-size: 2.2rem;
+  }
+
+  .depoimentos p {
+    font-size: 1.4rem;
+  }
+
+  .depoimento-card p {
+    font-size: 1.2rem;
+  }
+
+  .depoimento-card h4 {
+    font-size: 1.4rem;
+  }
+
+  .depoimentos-controls button {
+    width: 35px;
+    height: 35px;
+  }
+
+
+  .contato h2 {
+    font-size: 2.2rem;
+  }
+
+  .contato p {
+    font-size: 1.4rem;
+    padding: 0 10px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 1.4rem;
+  }
+
+  .btn-contato {
+    font-size: 1.6rem;
+    padding: 12px 0;
+  }
+}
