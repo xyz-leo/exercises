@@ -107,10 +107,9 @@ team-dashboard/
 
 ### Functionality
 - No real-time updates or WebSocket support
-- Limited file upload capabilities
+- No file upload capabilities
 - No advanced search or filtering
 - Missing email verification
-- No password reset functionality
 - Limited error handling and user feedback
 
 ### UI/UX
