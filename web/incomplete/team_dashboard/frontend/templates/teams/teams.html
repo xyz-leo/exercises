@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Teams - TeamDashboard{% endblock %}
+
+{% block extra_css %}
+<link href="{{ url_for('static', path='css/teams.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="teams-container">
+    <div class="teams-header">
+        <h1 class="teams-title">Teams</h1>
+        <div class="teams-actions">
+            <select class="filter-select" onchange="window.location.href='/team?filter=' + this.value">
+                <option value="all" {% if filter_type == 'all' %}selected{% endif %}>All Teams</option>
+                <option value="my_teams" {% if filter_type == 'my_teams' %}selected{% endif %}>My Teams</option>
+            </select>
+            <a href="/team/create" class="btn btn-primary">Create Team</a>
+        </div>
+    </div>
+
+    {% if error %}
+    <div style="background: var(--error); color: white; padding: 15px; border-radius: 8px; margin-bottom: 2rem;">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <div class="teams-grid">
+        {% if teams %}
+            {% for team in teams %}
+            <div class="team-card" onclick="window.location.href='/team/{{ team.id }}'">
+                <div class="team-header">
+                    <h3 class="team-name">{{ team.name }}</h3>
+                    <div class="team-meta">
+                        {% for member in team.members %}
+                            {% if member.user_id == current_user.id %}
+                                {% if member.is_moderator %}
+                                <span class="team-role role-moderator">Moderator</span>
+                                {% else %}
+                                <span class="team-role role-member">Member</span>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="team-stats">
+                    <div class="team-stat">
+                        <span class="stat-number">{{ team.members|length }}</span>
+                        <span class="stat-label">Members</span>
+                    </div>
+                    <div class="team-stat">
+                        <span class="stat-number">{{ team.tasks|length if team.tasks else 0 }}</span>
+                        <span class="stat-label">Tasks</span>
+                    </div>
+                </div>
+                
+                <div class="team-footer">
+                    <div class="team-info">
+                        <div class="team-info-item">
+                            <strong>Created:</strong> {{ team.created_at.strftime('%b %d, %Y') }}
+                        </div>
+                    </div>
+                    <div class="team-actions">
+                        <a href="/team/{{ team.id }}" class="btn btn-outline btn-sm" onclick="event.stopPropagation()">View</a>
+                        {% for member in team.members %}
+                            {% if member.user_id == current_user.id and member.is_moderator %}
+                            <a href="/team/{{ team.id }}/edit" class="btn btn-outline btn-sm" onclick="event.stopPropagation()">Edit</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="teams-empty">
+                <div class="teams-empty-icon">👥</div>
+                <h3>No teams found</h3>
+                <p>{% if filter_type == 'my_teams' %}You haven't joined any teams yet.{% else %}No teams match your current filter.{% endif %}</p>
+                <a href="/team/create" class="btn btn-primary">Create Your First Team</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

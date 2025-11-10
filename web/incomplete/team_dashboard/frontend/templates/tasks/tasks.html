@@ -1,0 +1,86 @@
+<!-- Filename: tasks.html-->
+{% extends "base.html" %}
+
+{% block title %}Tasks - TeamDashboard{% endblock %}
+
+{% block extra_css %}
+<link href="{{ url_for('static', path='css/tasks.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="tasks-container">
+    <div class="tasks-header">
+        <h1 class="tasks-title">Tasks</h1>
+        <div class="tasks-actions">
+            <select class="filter-select" onchange="window.location.href='/task?filter=' + this.value">
+                <option value="my_tasks" {% if filter_type == 'my_tasks' %}selected{% endif %}>My Tasks</option>
+                <option value="team_tasks" {% if filter_type == 'team_tasks' %}selected{% endif %}>Team Tasks</option>
+                {% for status in status_options %}
+                <option value="status:{{ status }}" {% if filter_type == 'status:' + status %}selected{% endif %}>
+                    {{ status|title }}
+                </option>
+                {% endfor %}
+            </select>
+            <a href="/task/create" class="btn btn-primary">Create Task</a>
+        </div>
+    </div>
+
+    {% if error %}
+    <div style="background: var(--error); color: white; padding: 15px; border-radius: 8px; margin-bottom: 2rem;">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <div class="tasks-list">
+        {% if tasks %}
+            {% for task in tasks %}
+            <div class="task-card" onclick="window.location.href='/task/{{ task.id }}'">
+                <div class="task-header">
+                    <h3 class="task-title">{{ task.title }}</h3>
+                    <div class="task-meta">
+                        <span class="task-status status-{{ task.status }}">{{ task.status }}</span>
+                        {% if task.team %}
+                        <span class="task-priority">{{ task.team.name }}</span>
+                        {% else %}
+                        <span class="task-priority">Personal</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                {% if task.description %}
+                <p class="task-description">
+                    {{ task.description[:150] }}{% if task.description|length > 150 %}...{% endif %}
+                </p>
+                {% endif %}
+                
+                <div class="task-footer">
+                    <div class="task-info">
+                        <div class="task-info-item">
+                            <strong>Owner:</strong> {{ task.owner.username }}
+                        </div>
+                        <div class="task-info-item">
+                            <strong>Created:</strong> {{ task.created_at.strftime('%b %d, %Y') }}
+                        </div>
+                        {% if task.due_date %}
+                        <div class="task-info-item">
+                            <strong>Due:</strong> {{ task.due_date.strftime('%b %d, %Y') }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="task-actions">
+                        <a href="/task/{{ task.id }}/edit" class="btn btn-outline btn-sm" onclick="event.stopPropagation()">Edit</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="tasks-empty">
+                <div class="tasks-empty-icon">📝</div>
+                <h3>No tasks found</h3>
+                <p>{% if filter_type == 'my_tasks' %}You don't have any personal tasks yet.{% else %}No tasks match your current filter.{% endif %}</p>
+                <a href="/task/create" class="btn btn-primary">Create Your First Task</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

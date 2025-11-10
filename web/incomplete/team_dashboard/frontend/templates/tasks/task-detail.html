@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}{{ task.title if task else 'Task Not Found' }} - TeamDashboard{% endblock %}
+
+{% block extra_css %}
+<link href="{{ url_for('static', path='css/tasks.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="task-detail-container">
+    {% if error %}
+    <div style="background: var(--error); color: white; padding: 15px; border-radius: 8px; margin-bottom: 2rem;">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    {% if task %}
+    <div class="task-detail-card">
+        <div class="task-detail-header">
+            <h1 class="task-detail-title">{{ task.title }}</h1>
+            <div class="task-detail-meta">
+                <span class="task-status status-{{ task.status }}">{{ task.status }}</span>
+                {% if task.team %}
+                <span class="task-priority">{{ task.team.name }}</span>
+                {% else %}
+                <span class="task-priority">Personal</span>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if task.description %}
+        <div class="task-description">
+            {{ task.description }}
+        </div>
+        {% endif %}
+
+        <div class="task-detail-grid">
+            <div class="task-detail-item">
+                <div class="task-detail-label">Owner</div>
+                <div class="task-detail-value">{{ task.owner.username }}</div>
+            </div>
+            
+            <div class="task-detail-item">
+                <div class="task-detail-label">Status</div>
+                <div class="task-detail-value">{{ task.status|title }}</div>
+            </div>
+            
+            <div class="task-detail-item">
+                <div class="task-detail-label">Created</div>
+                <div class="task-detail-value">{{ task.created_at.strftime('%B %d, %Y at %I:%M %p') }}</div>
+            </div>
+            
+            <div class="task-detail-item">
+                <div class="task-detail-label">Last Updated</div>
+                <div class="task-detail-value">{{ task.updated_at.strftime('%B %d, %Y at %I:%M %p') }}</div>
+            </div>
+            
+            {% if task.due_date %}
+            <div class="task-detail-item">
+                <div class="task-detail-label">Due Date</div>
+                <div class="task-detail-value">{{ task.due_date.strftime('%B %d, %Y at %I:%M %p') }}</div>
+            </div>
+            {% endif %}
+            
+            <div class="task-detail-item">
+                <div class="task-detail-label">Task Type</div>
+                <div class="task-detail-value">
+                    {% if task.team %}Team Task{% else %}Personal Task{% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="task-detail-actions">
+            <a href="/task" class="btn btn-outline">Back to Tasks</a>
+            {% if task.owner_id == current_user.id or (task.team and task.team.moderator_id == current_user.id) %}
+            <a href="/task/{{ task.id }}/edit" class="btn btn-primary">Edit Task</a>
+            <form method="POST" action="/task/{{ task.id }}/delete" style="display: inline;">
+                <button type="submit" class="btn btn-secondary" 
+                    onclick="return confirm('Are you sure you want to delete this task?')">
+                    Delete Task
+                </button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

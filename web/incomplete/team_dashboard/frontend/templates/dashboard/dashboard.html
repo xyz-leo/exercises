@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - TeamDashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <h1>Welcome to Your Dashboard, {{ user.username }}!</h1>
+    
+    <div class="dashboard-grid">
+        <section class="tasks-section">
+            <h2>My Tasks</h2>
+            {% if tasks %}
+            <div class="tasks-list">
+                {% for task in tasks %}
+                <div class="task-card">
+                    <h3>{{ task.title }}</h3>
+                    <p>{{ task.description }}</p>
+                    <span class="task-status {{ task.status }}">{{ task.status }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No tasks found.</p>
+            {% endif %}
+        </section>
+        
+        <section class="teams-section">
+            <h2>My Teams</h2>
+            {% if teams %}
+            <div class="teams-list">
+                {% for team in teams %}
+                <div class="team-card">
+                    <h3>{{ team.name }}</h3>
+                    <p>{{ team.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>You are not in any teams.</p>
+            {% endif %}
+        </section>
+    </div>
+</div>
+{% endblock %}

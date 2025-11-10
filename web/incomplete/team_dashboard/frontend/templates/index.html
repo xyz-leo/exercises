@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}TeamDashboard - Collaborative Team Management{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>Streamline Your Team Collaboration</h1>
+        <p>TeamDashboard is the ultimate solution for managing teams, tasks, and projects in one centralized platform. Boost productivity and enhance collaboration.</p>
+        <div class="hero-buttons">
+            <a href="/register" class="btn btn-primary">Get Started Free</a>
+            <a href="/login" class="btn btn-secondary">Sign In</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Powerful Features for Modern Teams</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Team Management</h3>
+                <p>Create and manage teams with role-based permissions and member management.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>Task Tracking</h3>
+                <p>Assign tasks to teams or individuals with status tracking and deadlines.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure Access</h3>
+                <p>JWT-based authentication ensures your data remains secure and protected.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Real-time Dashboard</h3>
+                <p>Monitor team progress and task status with intuitive visual dashboards.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

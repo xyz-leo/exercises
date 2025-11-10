@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile - TeamDashboard{% endblock %}
+
+{% block content %}
+<!-- Profile Header Section -->
+<section class="hero">
+    <div class="container">
+        <h1>My Profile</h1>
+        <p>Manage your account information and track your team activity.</p>
+    </div>
+</section>
+
+<!-- Profile Content Section -->
+<section class="features">
+    <div class="container">
+        <div class="features-grid">
+            <!-- User Information Card -->
+            <div class="feature-card">
+                <div class="feature-icon">👤</div>
+                <h3>Account Information</h3>
+                <div style="text-align: left; margin-top: 1.5rem;">
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Member since:</strong> {{ user.created_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+                    <p><strong>Last Update:</strong> {{ user.updated_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+                </div>
+                <div>
+                    <a href="/profile/edit" class="btn btn-secondary">Edit Profile</a>
+                </div>
+            </div>
+
+            <!-- Quick Stats Card -->
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Quick Stats</h3>
+                <div>
+                    <p><strong>Total Teams:</strong> {{ user_teams_count }}</p>
+                    <p><strong>Total Tasks:</strong> {{ user_tasks_count }}</p>
+                    <p><strong>Active Tasks:</strong> {{ active_tasks_count }}</p>
+                    <p><strong>Completed Tasks:</strong> {{ completed_tasks_count }}</p>
+                </div>
+                <div>
+                    <a href="/team" class="btn btn-primary">View Teams</a>
+                    <a href="/task" class="btn btn-primary">View Tasks</a>
+                </div>
+            </div>
+
+            <!-- Account Actions Card -->
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Account Actions</h3>
+                    <a href="/profile/change-password" class="btn btn-outline">Change Password</a>
+                <div>
+                    <a href="/logout" class="btn btn-secondary">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
